@@ -182,7 +182,7 @@ class AuthViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self) -> Type[serializers.Serializer]:
         if self.action == 'signup':
             return serializers.SignUpSerializer
-        elif self.action == 'token':
+        if self.action == 'token':
             return serializers.TokenSerializer
 
     @action(detail=False, methods=['POST'])

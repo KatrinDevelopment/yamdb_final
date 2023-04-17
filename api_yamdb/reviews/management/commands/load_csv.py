@@ -60,8 +60,7 @@ class Command(BaseCommand):
             if model.objects.exists():
                 print(f'data already loaded from {file} or already exists')
                 print(ALREADY_LOADED_ERROR_MESSAGE)
-                return
-
+                return None
         print('Loading data')
 
         for row in DictReader(open('./static/data/category.csv')):

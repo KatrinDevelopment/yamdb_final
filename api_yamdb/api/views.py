@@ -178,11 +178,12 @@ class UserViewSet(viewsets.ModelViewSet):
 class AuthViewSet(viewsets.ModelViewSet):
     queryset = models.User.objects.all()
 
-    def get_serializer_class(self) -> Type[serializers]:
+    def get_serializer_class(self) -> Type[serializers] or None:
         if self.action == 'signup':
             return serializers.SignUpSerializer
         if self.action == 'token':
             return serializers.TokenSerializer
+        return None
 
     @action(detail=False, methods=['POST'])
     def signup(self, request) -> Response:

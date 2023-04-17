@@ -14,7 +14,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from api import permissions, serializers
 from api.filters import TitleFilter
-from api.serializers import SignUpSerializer
 from reviews import models
 
 
@@ -179,11 +178,14 @@ class UserViewSet(viewsets.ModelViewSet):
 class AuthViewSet(viewsets.ModelViewSet):
     queryset = models.User.objects.all()
 
-    def get_serializer_class(self) -> Union[Type[serializers.SignUpSerializer],Type[serializers.TokenSerializer]]:
+    def get_serializer_class(self) -> Union[Type[serializers.SignUpSerializer],
+                                            Type[serializers.TokenSerializer],
+                                            None]:
         if self.action == 'signup':
             return serializers.SignUpSerializer
         if self.action == 'token':
             return serializers.TokenSerializer
+        return None
 
     @action(detail=False, methods=['POST'])
     def signup(self, request) -> Response:

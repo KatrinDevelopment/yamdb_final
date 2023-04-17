@@ -15,7 +15,7 @@ services:
 
   web:
     build: ../api_yamdb
-    image: katrinsa/api_yamdb_compose:v1.17.04.23
+    image: katrinsa/api_yamdb_compose:latest
     restart: always
     volumes:
       - static_value:/app/static/

@@ -1,5 +1,5 @@
 import uuid
-from typing import Type
+from typing import Type, Union
 
 from django.core.mail import send_mail
 from django.db.models import Avg
@@ -179,7 +179,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class AuthViewSet(viewsets.ModelViewSet):
     queryset = models.User.objects.all()
 
-    def get_serializer_class(self) -> Type[serializers.Serializer]:
+    def get_serializer_class(self) -> Union[Type[serializers.SignUpSerializer],Type[serializers.TokenSerializer]]:
         if self.action == 'signup':
             return serializers.SignUpSerializer
         if self.action == 'token':

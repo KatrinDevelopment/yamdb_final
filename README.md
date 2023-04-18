@@ -1,6 +1,6 @@
 # REST API для Yatube
 
-![workflow status](https://github.com/KatrinDevelopment/yamdb_final/actions/workflows/main.yml/badge.svg)
+![Status](https://github.com/KatrinDevelopment/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 ## Описание проекта
 

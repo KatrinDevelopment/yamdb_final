@@ -14,7 +14,6 @@ services:
       - ./.env
 
   web:
-    build: ../api_yamdb
     image: katrinsa/api_yamdb_compose:latest
     restart: always
     volumes:

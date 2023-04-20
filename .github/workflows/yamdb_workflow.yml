@@ -18,13 +18,12 @@ jobs:
         python -m pip install --upgrade pip 
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
         cd api_yamdb/
-        pip install -r requirements.txt 
-
-    - name: Set up environment variables
-      env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        pip install -r requirements.txt
 
     - name: Test with flake8 and django tests
+      script: |
+        touch .env
+        echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
       run: |
         python -m flake8
         pytest

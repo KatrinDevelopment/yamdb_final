@@ -28,6 +28,8 @@ jobs:
         pytest .
         cd api_yamdb/
         python manage.py test
+        cd static/
+        ./manage.py spectacular --color --file schema.yml
 
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
